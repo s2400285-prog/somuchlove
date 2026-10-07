@@ -1,0 +1,478 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  background: radial-gradient(
+    circle at top,
+    #5d245f 0%,
+    #281735 38%,
+    #100b1d 100%
+  );
+  color: white;
+  font-family: "Poppins", sans-serif;
+  overflow-x: hidden;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(
+      circle at 20% 20%,
+      rgba(255, 105, 180, 0.16),
+      transparent 30%
+    ),
+    radial-gradient(
+      circle at 80% 70%,
+      rgba(180, 100, 255, 0.13),
+      transparent 30%
+    );
+  pointer-events: none;
+}
+
+.container {
+  width: 100%;
+  max-width: 850px;
+  margin: auto;
+  padding: 50px 20px 100px;
+  text-align: center;
+  position: relative;
+  z-index: 2;
+}
+
+.top-text p {
+  font-size: 13px;
+  letter-spacing: 2px;
+  color: #f5c9e8;
+  margin-bottom: 10px;
+}
+
+.top-text h1 {
+  font-family: "Dancing Script", cursive;
+  font-size: clamp(48px, 9vw, 85px);
+  color: #fff;
+  text-shadow:
+    0 0 10px #ff8bd8,
+    0 0 25px #ff4fc3,
+    0 0 50px #c94cff;
+}
+
+.photo-container {
+  width: 190px;
+  height: 190px;
+  margin: 35px auto;
+  position: relative;
+}
+
+.photo-container img {
+  width: 175px;
+  height: 175px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 5px solid rgba(255, 255, 255, 0.8);
+  position: relative;
+  z-index: 2;
+  box-shadow:
+    0 0 20px #ff79d5,
+    0 0 50px rgba(255, 79, 195, 0.5);
+}
+
+.photo-glow {
+  position: absolute;
+  width: 190px;
+  height: 190px;
+  border-radius: 50%;
+  background: #ff5ac8;
+  filter: blur(25px);
+  opacity: 0.5;
+  animation: pulse 2.5s infinite;
+}
+
+.heart-badge {
+  position: absolute;
+  right: 5px;
+  bottom: 10px;
+  z-index: 5;
+  background: #ff4fae;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 0 20px #ff4fae;
+}
+
+.music-btn {
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  padding: 13px 25px;
+  border-radius: 30px;
+  cursor: pointer;
+  backdrop-filter: blur(10px);
+  transition: 0.3s;
+  margin-bottom: 40px;
+}
+
+.music-btn:hover {
+  transform: scale(1.08);
+  background: rgba(255, 105, 180, 0.25);
+  box-shadow: 0 0 25px rgba(255, 105, 180, 0.5);
+}
+
+.envelope {
+  width: 100%;
+  max-width: 700px;
+  min-height: 250px;
+  margin: auto;
+  position: relative;
+  border-radius: 20px;
+  transition: 1s;
+}
+
+.envelope-back {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(145deg, #6e245e, #3a173e);
+  border-radius: 20px;
+  box-shadow:
+    0 0 30px rgba(255, 77, 188, 0.2),
+    inset 0 0 30px rgba(255, 255, 255, 0.04);
+}
+
+.letter {
+  position: relative;
+  z-index: 3;
+  background: linear-gradient(
+    rgba(255, 255, 255, 0.97),
+    rgba(255, 240, 250, 0.97)
+  );
+  color: #43263c;
+  border-radius: 18px;
+  padding: 45px 45px 55px;
+  text-align: left;
+  transform: translateY(25px) scale(0.94);
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: 1.2s ease;
+}
+
+.envelope.open .letter {
+  transform: translateY(0) scale(1);
+  opacity: 1;
+  max-height: 4000px;
+}
+
+.letter-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 35px;
+  color: #d13f9c;
+}
+
+.letter-header h2 {
+  font-family: "Dancing Script", cursive;
+  font-size: 40px;
+}
+
+.letter-header span {
+  font-size: 25px;
+}
+
+.letter p {
+  font-size: 15px;
+  line-height: 1.9;
+  margin-bottom: 22px;
+}
+
+.greeting {
+  font-family: "Dancing Script", cursive;
+  font-size: 30px !important;
+  color: #c23991;
+}
+
+.quote {
+  margin: 35px 0;
+  padding: 25px;
+  border-left: 4px solid #e34da8;
+  background: rgba(255, 148, 215, 0.12);
+  border-radius: 10px;
+  font-family: "Dancing Script", cursive;
+  font-size: 27px;
+  line-height: 1.5;
+  color: #a22d7b;
+}
+
+.highlight {
+  text-align: center;
+  font-family: "Dancing Script", cursive;
+  font-size: 35px !important;
+  color: #d43d9b;
+  font-weight: bold;
+}
+
+.special-message {
+  text-align: center;
+  padding: 25px;
+  margin: 30px 0;
+  border-radius: 18px;
+  background: linear-gradient(135deg, #fff0fa, #fbe1f3);
+  color: #a52e7d;
+  font-family: "Dancing Script", cursive;
+  font-size: 28px;
+  line-height: 1.6;
+  box-shadow: 0 5px 25px rgba(180, 60, 140, 0.15);
+}
+
+.final-love {
+  text-align: center;
+  font-family: "Dancing Script", cursive;
+  font-size: 28px !important;
+  color: #a32c7b;
+}
+
+.big-love {
+  text-align: center;
+  font-family: "Dancing Script", cursive;
+  font-size: clamp(40px, 8vw, 70px);
+  color: #d83c9d;
+  text-shadow: 0 0 15px rgba(216, 60, 157, 0.4);
+  margin: 25px 0;
+}
+
+.signature-text {
+  text-align: center;
+  font-family: "Dancing Script", cursive;
+  font-size: 25px !important;
+}
+
+.signature {
+  text-align: right;
+  font-family: "Dancing Script", cursive;
+  font-size: 25px;
+  margin-top: 35px;
+  color: #9b3277;
+}
+
+.signature span {
+  font-size: 38px;
+  color: #d43e9e;
+}
+
+.open-btn {
+  position: absolute;
+  z-index: 5;
+  left: 50%;
+  top: 105px;
+  transform: translateX(-50%);
+  padding: 16px 30px;
+  border: none;
+  border-radius: 40px;
+  background: linear-gradient(135deg, #ff5fc7, #9c4dff);
+  color: white;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow:
+    0 0 20px rgba(255, 95, 199, 0.6),
+    0 0 40px rgba(156, 77, 255, 0.3);
+  transition: 0.4s;
+}
+
+.open-btn:hover {
+  transform: translateX(-50%) scale(1.08);
+}
+
+.envelope.open .open-btn {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.question-section {
+  margin-top: 80px;
+  padding: 40px 20px;
+}
+
+.small-title {
+  color: #f3a9d8;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  font-size: 12px;
+}
+
+.question-section h2 {
+  font-family: "Dancing Script", cursive;
+  font-size: clamp(35px, 7vw, 55px);
+  margin: 15px 0 30px;
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.buttons button {
+  padding: 15px 30px;
+  border: none;
+  border-radius: 30px;
+  color: white;
+  background: linear-gradient(135deg, #ff4fac, #8c4cff);
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.3s;
+  box-shadow: 0 0 20px rgba(255, 79, 172, 0.3);
+}
+
+.buttons button:hover {
+  transform: translateY(-5px) scale(1.05);
+}
+
+#answer {
+  margin-top: 25px;
+  color: #ffc5e9;
+  font-family: "Dancing Script", cursive;
+  font-size: 30px;
+}
+
+.hearts span {
+  position: fixed;
+  color: #ff82cf;
+  opacity: 0.5;
+  font-size: 20px;
+  animation: float 10s linear infinite;
+  z-index: 1;
+}
+
+.hearts span:nth-child(1) {
+  left: 5%;
+  animation-delay: 0s;
+}
+.hearts span:nth-child(2) {
+  left: 15%;
+  animation-delay: 2s;
+}
+.hearts span:nth-child(3) {
+  left: 30%;
+  animation-delay: 4s;
+}
+.hearts span:nth-child(4) {
+  left: 45%;
+  animation-delay: 1s;
+}
+.hearts span:nth-child(5) {
+  left: 60%;
+  animation-delay: 5s;
+}
+.hearts span:nth-child(6) {
+  left: 72%;
+  animation-delay: 3s;
+}
+.hearts span:nth-child(7) {
+  left: 85%;
+  animation-delay: 6s;
+}
+.hearts span:nth-child(8) {
+  left: 95%;
+  animation-delay: 4s;
+}
+
+.flower {
+  position: fixed;
+  font-size: 45px;
+  opacity: 0.25;
+  z-index: 1;
+  animation: flowerFloat 5s ease-in-out infinite;
+}
+
+.flower1 {
+  left: 3%;
+  top: 20%;
+}
+.flower2 {
+  right: 4%;
+  top: 35%;
+  animation-delay: 1s;
+}
+.flower3 {
+  left: 5%;
+  bottom: 15%;
+  animation-delay: 2s;
+}
+.flower4 {
+  right: 5%;
+  bottom: 10%;
+  animation-delay: 3s;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(110vh) rotate(0deg);
+  }
+  100% {
+    transform: translateY(-120px) rotate(360deg);
+  }
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    transform: scale(0.9);
+    opacity: 0.35;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 0.7;
+  }
+}
+
+@keyframes flowerFloat {
+  0%,
+  100% {
+    transform: translateY(0) rotate(-5deg);
+  }
+  50% {
+    transform: translateY(-15px) rotate(5deg);
+  }
+}
+
+@media (max-width: 600px) {
+  .container {
+    padding-top: 35px;
+  }
+
+  .letter {
+    padding: 30px 22px 40px;
+  }
+
+  .letter p {
+    font-size: 14px;
+    line-height: 1.8;
+  }
+
+  .letter-header h2 {
+    font-size: 32px;
+  }
+
+  .quote {
+    font-size: 23px;
+  }
+
+  .special-message {
+    font-size: 24px;
+  }
+
+  .open-btn {
+    white-space: nowrap;
+  }
+}
